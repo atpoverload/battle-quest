@@ -1,0 +1,85 @@
+{
+    "characters": [
+        {
+            "vocation": {
+                "name": "hero",
+                "health": 10,
+                "items": [
+                    "any"
+                ]
+            }
+        },
+        {
+            "species": {
+                "name": "slime",
+                "health": 10,
+                "moves": {
+                    "attack": 0,
+                    "defend": 0,
+                    "heal": 2
+                }
+            }
+        }
+    ],
+    "moves": [
+        {
+            "name": "attack",
+            "description": "deals 1 damage",
+            "target": "enemies",
+            "priority": 0,
+            "attack": {
+                "type": "flat",
+                "value": 1
+            }
+        },
+        {
+            "name": "heal",
+            "description": "restores 1 health",
+            "target": "ally",
+            "priority": 0,
+            "heal": {
+                "type": "flat",
+                "value": 1
+            }
+        },
+        {
+            "name": "defend",
+            "description": "blocks the next attack",
+            "target": "self",
+            "priority": 5,
+            "defend": ""
+        }
+    ],
+    "items": [
+        {
+            "name": "sword",
+            "description": "a weapon that deals 1 damage",
+            "slot": "weapon",
+            "target": "enemy",
+            "priority": 0,
+            "attack": {
+                "type": "flat",
+                "value": 1
+            }
+        },
+        {
+            "name": "shield",
+            "description": "an offhand item that blocks the next attack",
+            "slot": "offhand",
+            "target": "self",
+            "priority": 5,
+            "defend": ""
+        },
+        {
+            "name": "herb",
+            "description": "a medical salve that restores 1 health",
+            "slot": "consumable",
+            "target": "ally",
+            "priority": 0,
+            "heal": {
+                "type": "flat",
+                "value": 1
+            }
+        }
+    ]
+}

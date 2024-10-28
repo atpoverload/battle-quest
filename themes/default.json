@@ -1,0 +1,49 @@
+{
+    "button": {
+        "colours": {
+            "normal_border": "White",
+            "normal_bg": "SlateGray",
+            "normal_text": "White"
+        },
+        "misc": {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "10",
+            "border_width": "2"
+        }
+    },
+    "@action_button": {
+        "colours": {
+            "normal_border": "rgba(0,0,0,0)",
+            "normal_bg": "rgba(0,0,0,0)",
+            "hovered_bg": "rgba(100,0,0,100)",
+            "normal_text": "White",
+            "hovered_text": "White"
+        },
+        "misc": {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "10",
+            "border_width": "2"
+        }
+    },
+    "#action_button": {},
+    "@character_button": {
+        "colours": {
+            "normal_border": "rgba(0,0,0,0)",
+            "normal_bg": "rgba(0,0,0,0)",
+            "hovered_bg": "rgba(100,0,0,100)",
+            "disabled_border": "rgba(0,0,0,0)",
+            "disabled_bg": "rgba(0,0,0,0)",
+            "normal_text": "White",
+            "hovered_text": "White"
+        },
+        "misc": {
+            "shadow_width": "5",
+            "shape": "rounded_rectangle"
+        }
+    },
+    "#character_button": {
+        "misc": {
+            "text_vert_alignment": "top"
+        }
+    }
+}
