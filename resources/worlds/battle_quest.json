@@ -1,0 +1,753 @@
+{
+    "adventurers": [
+        {
+            "name": "warrior",
+            "health": 10,
+            "element": [
+                "body",
+                "steel",
+                "stone"
+            ]
+        },
+        {
+            "name": "barbarian",
+            "health": 10,
+            "element": [
+                "body",
+                "stone",
+                "fire"
+            ]
+        },
+        {
+            "name": "thief",
+            "health": 10,
+            "element": [
+                "body",
+                "wood",
+                "fire"
+            ]
+        },
+        {
+            "name": "paladin",
+            "health": 10,
+            "element": [
+                "body",
+                "wood",
+                "water"
+            ]
+        },
+        {
+            "name": "monk",
+            "health": 10,
+            "element": [
+                "body",
+                "water",
+                "steel"
+            ]
+        },
+        {
+            "name": "druid",
+            "health": 10,
+            "element": [
+                "mind",
+                "wood",
+                "stone"
+            ]
+        },
+        {
+            "name": "mage",
+            "health": 10,
+            "element": [
+                "mind",
+                "water",
+                "fire"
+            ]
+        },
+        {
+            "name": "bard",
+            "health": 10,
+            "element": [
+                "mind",
+                "wood",
+                "steel"
+            ]
+        },
+        {
+            "name": "cleric",
+            "health": 10,
+            "element": [
+                "mind",
+                "water",
+                "stone"
+            ]
+        },
+        {
+            "name": "warlock",
+            "health": 10,
+            "element": [
+                "mind",
+                "steel",
+                "fire"
+            ]
+        }
+    ],
+    "monsters": [
+        {
+            "name": "tiger",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "wood"
+            ]
+        },
+        {
+            "name": "boar",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "water"
+            ]
+        },
+        {
+            "name": "raven",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "steel"
+            ]
+        },
+        {
+            "name": "wolf",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "stone"
+            ]
+        },
+        {
+            "name": "viper",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "fire"
+            ]
+        },
+        {
+            "name": "lion",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "wood",
+                "water"
+            ]
+        },
+        {
+            "name": "turkey",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "water",
+                "steel"
+            ]
+        },
+        {
+            "name": "owl",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "steel",
+                "stone"
+            ]
+        },
+        {
+            "name": "coyote",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "stone",
+                "fire"
+            ]
+        },
+        {
+            "name": "cobra",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "wood",
+                "fire"
+            ]
+        },
+        {
+            "name": "eagle",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "wood",
+                "steel"
+            ]
+        },
+        {
+            "name": "bear",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "water",
+                "stone"
+            ]
+        },
+        {
+            "name": "bat",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "steel",
+                "fire"
+            ]
+        },
+        {
+            "name": "jackal",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "wood",
+                "stone"
+            ]
+        },
+        {
+            "name": "asp",
+            "health": 10,
+            "speed": 0,
+            "element": [
+                "water",
+                "fire"
+            ]
+        }
+    ],
+    "elements": {
+        "wood": {
+            "wood": 0.5,
+            "water": 2.0,
+            "steel": 0.5,
+            "stone": 2.0,
+            "fire": 1.0,
+            "body": 1.0,
+            "mind": 0.5,
+            "spirit": 0.5
+        },
+        "water": {
+            "wood": 1.0,
+            "water": 0.5,
+            "steel": 2.0,
+            "stone": 0.5,
+            "fire": 2.0,
+            "body": 2.0,
+            "mind": 0.5,
+            "spirit": 0.5
+        },
+        "steel": {
+            "wood": 2.5,
+            "water": 1.0,
+            "steel": 0.5,
+            "stone": 2.0,
+            "fire": 0.5,
+            "body": 1.0,
+            "mind": 2.0,
+            "spirit": 1.0
+        },
+        "stone": {
+            "wood": 0.5,
+            "water": 2.0,
+            "steel": 1.0,
+            "stone": 0.5,
+            "fire": 2.0,
+            "body": 1.0,
+            "mind": 2.0,
+            "spirit": 0.5
+        },
+        "fire": {
+            "wood": 2.0,
+            "water": 0.5,
+            "steel": 2.0,
+            "stone": 1.0,
+            "fire": 0.5,
+            "body": 2.0,
+            "mind": 0.5,
+            "spirit": 0.5
+        },
+        "body": {
+            "wood": 2.0,
+            "water": 1.0,
+            "steel": 2.0,
+            "stone": 2.0,
+            "fire": 1.0,
+            "body": 1.0,
+            "mind": 0.5,
+            "spirit": 2.0
+        },
+        "mind": {
+            "wood": 1.0,
+            "water": 1.0,
+            "steel": 1.0,
+            "stone": 1.0,
+            "fire": 1.0,
+            "body": 2.0,
+            "mind": 0.5,
+            "spirit": 0.5
+        },
+        "spirit": {
+            "wood": 1.0,
+            "water": 1.0,
+            "steel": 1.0,
+            "stone": 1.0,
+            "fire": 1.0,
+            "body": 1.0,
+            "mind": 2.0,
+            "spirit": 2.0
+        }
+    },
+    "moves": [
+        {
+            "name": "pounce",
+            "description": "deals wood damage to an enemy",
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "wood",
+                "value": 2
+            }
+        },
+        {
+            "name": "tackle",
+            "description": "deals water damage to an enemy",
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "water",
+                "value": 2
+            }
+        },
+        {
+            "name": "slash",
+            "description": "deals steel damage to an enemy",
+            "target": "steel",
+            "effect": {
+                "type": "attack",
+                "element": "steel",
+                "value": 2
+            }
+        },
+        {
+            "name": "lunge",
+            "description": "deals stone damage to an enemy",
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "stone",
+                "value": 2
+            }
+        },
+        {
+            "name": "bite",
+            "description": "deals fire damage to an enemy",
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "fire",
+                "value": 2
+            }
+        },
+        {
+            "name": "swipe",
+            "description": "deals wood damage to enemies",
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "wood",
+                "value": 1
+            }
+        },
+        {
+            "name": "charge",
+            "description": "deals water damage to enemies",
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "water",
+                "value": 1
+            }
+        },
+        {
+            "name": "claw",
+            "description": "deals steel damage to enemies",
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "steel",
+                "value": 1
+            }
+        },
+        {
+            "name": "stab",
+            "description": "deals stone damage to enemies",
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "stone",
+                "value": 1
+            }
+        },
+        {
+            "name": "shred",
+            "description": "deals fire damage to enemies",
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "fire",
+                "value": 1
+            }
+        },
+        {
+            "name": "howl",
+            "description": "applies blind",
+            "target": "enemies",
+            "effect": {
+                "type": "condition",
+                "value": "blind"
+            }
+        },
+        {
+            "name": "dodge",
+            "description": "defends",
+            "target": "self",
+            "effect": {
+                "type": "condition",
+                "value": "defend"
+            }
+        }
+    ],
+    "items": [
+        {
+            "name": "sword",
+            "description": "a weapon that deals steel damage",
+            "slot": "weapon",
+            "element": [
+                "steel",
+                "fire"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "steel",
+                "value": 2
+            }
+        },
+        {
+            "name": "dagger",
+            "description": "a weapon that deals wood damage",
+            "slot": "weapon",
+            "element": [
+                "body",
+                "wood"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "wood",
+                "value": 1
+            }
+        },
+        {
+            "name": "axe",
+            "description": "a weapon that deals stone damage",
+            "slot": "weapon",
+            "element": [
+                "steel",
+                "stone"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "stone",
+                "value": 2
+            }
+        },
+        {
+            "name": "spear",
+            "description": "a weapon that deals steel damage",
+            "slot": "weapon",
+            "element": [
+                "steel",
+                "fire"
+            ],
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "steel",
+                "value": 1
+            }
+        },
+        {
+            "name": "sling",
+            "description": "a weapon that deals stone damage",
+            "slot": "weapon",
+            "element": [
+                "wood",
+                "stone"
+            ],
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "stone",
+                "value": 1
+            }
+        },
+        {
+            "name": "bow",
+            "description": "a weapon that deals wood damage",
+            "slot": "weapon",
+            "element": [
+                "wood",
+                "stone"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "wood",
+                "value": 3
+            }
+        },
+        {
+            "name": "wand",
+            "description": "a weapon that deals fire damage",
+            "slot": "weapon",
+            "element": [
+                "fire"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "fire",
+                "value": 4
+            }
+        },
+        {
+            "name": "staff",
+            "description": "a weapon that deals water damage",
+            "slot": "weapon",
+            "element": [
+                "water",
+                "mind"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "water",
+                "value": 2
+            }
+        },
+        {
+            "name": "mace",
+            "description": "a weapon that deals stone damage",
+            "slot": "weapon",
+            "element": [
+                "stone",
+                "body"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "attack",
+                "element": "stone",
+                "value": 2
+            }
+        },
+        {
+            "name": "buckler",
+            "description": "an offhand item that blocks the next attack",
+            "slot": "offhand",
+            "element": [
+                "body",
+                "water",
+                "steel"
+            ],
+            "target": "self",
+            "effect": {
+                "type": "condition",
+                "value": "defend"
+            }
+        },
+        {
+            "name": "orb",
+            "description": "an offhand item that deals water damage",
+            "slot": "offhand",
+            "element": [
+                "wood",
+                "water"
+            ],
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "water",
+                "value": 1
+            }
+        },
+        {
+            "name": "satchel",
+            "description": "an offhand item that puts an enemy to sleep",
+            "slot": "offhand",
+            "element": [
+                "wood",
+                "water"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "condition",
+                "value": "sleep"
+            }
+        },
+        {
+            "name": "torch",
+            "description": "an offhand item that blocks the next attack",
+            "slot": "offhand",
+            "element": [
+                "wood",
+                "fire"
+            ],
+            "target": "enemy",
+            "effect": {
+                "type": "condition",
+                "value": "blind"
+            }
+        },
+        {
+            "name": "book",
+            "description": "an offhand item that heals an ally",
+            "slot": "offhand",
+            "element": [
+                "water"
+            ],
+            "target": "ally",
+            "effect": {
+                "type": "heal",
+                "value": 2
+            }
+        },
+        {
+            "name": "beads",
+            "description": "an offhand item that heals an ally",
+            "slot": "offhand",
+            "element": [
+                "wood"
+            ],
+            "target": "allies",
+            "effect": {
+                "type": "heal",
+                "value": 1
+            }
+        },
+        {
+            "name": "heater",
+            "description": "an offhand item that heals an ally",
+            "slot": "offhand",
+            "element": [
+                "stone"
+            ],
+            "target": "ally",
+            "effect": {
+                "type": "condition",
+                "value": "defend"
+            }
+        },
+        {
+            "name": "mail",
+            "description": "armor that gives great protection",
+            "slot": "armor",
+            "element": [
+                "steel"
+            ],
+            "effect": {
+                "type": "defense",
+                "element": "steel"
+            }
+        },
+        {
+            "name": "leather",
+            "description": "armor that gives good protection",
+            "slot": "armor",
+            "element": [
+                "wood",
+                "stone",
+                "body"
+            ],
+            "effect": {
+                "type": "defense",
+                "element": "wood"
+            }
+        },
+        {
+            "name": "cloth",
+            "description": "armor that gives protection",
+            "slot": "armor",
+            "element": [
+                "mind",
+                "wood"
+            ],
+            "effect": {
+                "type": "defense",
+                "element": "mind"
+            }
+        },
+        {
+            "name": "bomb",
+            "description": "an explosive that deals fire damage",
+            "slot": "consumable",
+            "element": [
+                "any"
+            ],
+            "target": "enemies",
+            "effect": {
+                "type": "attack",
+                "element": "fire",
+                "value": 2
+            }
+        },
+        {
+            "name": "herb",
+            "description": "a medical salve that restores 1 health",
+            "slot": "consumable",
+            "element": [
+                "any"
+            ],
+            "target": "ally",
+            "effect": {
+                "type": "heal",
+                "value": 3
+            }
+        },
+        {
+            "name": "potion",
+            "description": "a medical salve that restores 2 health",
+            "slot": "consumable",
+            "element": [
+                "any"
+            ],
+            "target": "ally",
+            "effect": {
+                "type": "heal",
+                "value": 5
+            }
+        },
+        {
+            "name": "salve",
+            "description": "a medical salve that restores 1 health to everyone",
+            "slot": "consumable",
+            "element": [
+                "any"
+            ],
+            "target": "allies",
+            "effect": {
+                "type": "heal",
+                "value": 2
+            }
+        }
+    ]
+}
