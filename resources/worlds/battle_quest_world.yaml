@@ -1,0 +1,763 @@
+world:
+  battle_quest
+
+description:
+  a simple config for the test battle quest world
+
+# mapping of attacking to defending elements; i.e. wood attacking wood is half-damage
+elements:
+  wood:
+    wood: 0.5
+    water: 2.0
+    steel: 0.5
+    rock: 2.0
+    fire: 1.0
+    body: 1.0
+    mind: 0.5
+    spirit: 0.5
+  water:
+    wood: 1.0
+    water: 0.5
+    steel: 2.0
+    rock: 0.5
+    fire: 2.0
+    body: 2.0
+    mind: 0.5
+    spirit: 0.5
+  steel:
+    wood: 2.0
+    water: 1.0
+    steel: 0.5
+    rock: 2.0
+    fire: 0.5
+    body: 1.0
+    mind: 2.0
+    spirit: 1.0
+  rock:
+    wood: 0.5
+    water: 2.0
+    steel: 1.0
+    rock: 0.5
+    fire: 2.0
+    body: 1.0
+    mind: 2.0
+    spirit: 0.5
+  fire:
+    wood: 2.0
+    water: 0.5
+    steel: 2.0
+    rock: 1.0
+    fire: 0.5
+    body: 2.0
+    mind: 0.5
+    spirit: 0.5
+  body:
+    wood: 2.0
+    water: 1.0
+    steel: 2.0
+    rock: 2.0
+    fire: 1.0
+    body: 1.0
+    mind: 0.5
+    spirit: 2.0
+  mind:
+    wood: 1.0
+    water: 1.0
+    steel: 1.0
+    rock: 1.0
+    fire: 1.0
+    body: 2.0
+    mind: 0.5
+    spirit: 0.5
+  spirit:
+    wood: 1.0
+    water: 1.0
+    steel: 1.0
+    rock: 1.0
+    fire: 1.0
+    body: 1.0
+    mind: 2.0
+    spirit: 2.0
+
+# conditions that can be applied to characters
+conditions:
+  stun
+  defend
+
+# vocations available
+adventurers:
+  # natural classes
+  barbarian:
+    health: 10
+    element:
+      - body
+      - spirit
+      - wood
+  hunter:
+    health: 10
+    element:
+      - body
+      - mind
+      - wood
+  druid:
+    health: 10
+    element:
+      - mind
+      - spirit
+      - wood
+  # divine classes
+  paladin:
+    health: 10
+    element:
+      - body
+      - spirit
+      - water
+  monk:
+    health: 10
+    element:
+      - body
+      - mind
+      - water
+  cleric:
+    health: 10
+    element:
+      - mind
+      - spirit
+      - water
+  # adventuring classes
+  warrior:
+    health: 10
+    element:
+      - body
+      - spirit
+      - steel
+  thief:
+    health: 10
+    element:
+      - body
+      - mind
+      - steel
+  chemist:
+    health: 10
+    element:
+      - mind
+      - spirit
+      - steel
+  # governing classes
+  knight:
+    health: 10
+    element:
+      - body
+      - spirit
+      - rock
+  bard:
+    health: 10
+    element:
+      - body
+      - mind
+      - rock
+  merchant:
+    health: 10
+    element:
+      - body
+      - mind
+      - rock
+  # wild classes
+  pirate:
+    health: 10
+    element:
+      - body
+      - spirit
+      - fire
+  bandit:
+    health: 10
+    element:
+      - body
+      - mind
+      - fire
+  mage:
+    health: 10
+    element:
+      - mind
+      - spirit
+      - fire
+
+monsters:
+  tiger:
+    health: 10
+    element:
+      - wood
+  boar:
+    health: 10
+    element:
+      - water
+  raven:
+    health: 10
+    element:
+      - steel
+  wolf:
+    health: 10
+    element:
+      - rock
+  viper:
+    health: 10
+    element:
+      - fire
+  lion:
+    health: 10
+    element:
+      - wood
+      - water
+  turkey:
+    health: 10
+    element:
+      - water
+      - steel
+  owl:
+    health: 10
+    element:
+      - steel
+      - rock
+  coyote:
+    health: 10
+    element:
+      - rock
+      - fire
+  cobra:
+    health: 10
+    element:
+      - wood
+      - fire
+  eagle:
+    health: 10
+    element:
+      - wood
+      - steel
+  bear:
+    health: 10
+    element:
+      - water
+      - rock
+  bat:
+    health: 10
+    element:
+      - steel
+      - fire
+  jackal:
+    health: 10
+    element:
+      - wood
+      - rock
+  asp:
+    health: 10
+    element:
+      - water
+      - fire
+
+items:
+  dagger:
+    slot: weapon
+    element:
+      - body
+      - steel
+      - fire
+    effect:
+      type: attack
+      target: enemy
+      element: steel
+      value: 1
+  stick:
+    slot: weapon
+    element:
+      - mind
+      - wood
+      - water
+    effect:
+      type: attack
+      target: enemy
+      element: wood
+      value: 1
+  club:
+    slot: weapon
+    element:
+      - body
+      - wood
+      - rock
+    effect:
+      type: attack
+      target: enemy
+      element: wood
+      value: 2
+  staff:
+    slot: weapon
+    element:
+      - body
+      - wood
+    effect:
+      type: attack
+      target: enemy
+      element: wood
+      value: 3
+  shortsword:
+    slot: weapon
+    element:
+      - body
+      - steel
+      - rock
+    effect:
+      type: attack
+      target: enemy
+      element: steel
+      value: 2
+  longsword:
+    slot: weapon
+    element:
+      - body
+      - steel
+    effect:
+      type: attack
+      target: enemy
+      element: steel
+      value: 3
+  axe:
+    slot: weapon
+    element:
+      - body
+      - steel
+      - rock
+    effect:
+      type: attack
+      target: enemy
+      element: rock
+      value: 2
+  halberd:
+    slot: weapon
+    element:
+      - body
+      - rock
+    effect:
+      type: attack
+      target: enemy
+      element: rock
+      value: 3
+  morningstar:
+    slot: weapon
+    element:
+      - wood
+      - water
+    effect:
+      type: attack
+      target: enemy
+      element: wood
+      value: 2
+  hammer:
+    slot: weapon
+    element:
+      - water
+      - steel
+    effect:
+      type: attack
+      target: enemy
+      element: steel
+      value: 2
+  mace:
+    slot: weapon
+    element:
+      - water
+      - rock
+    effect:
+      type: attack
+      target: enemy
+      element: rock
+      value: 2
+  shortbow:
+    slot: weapon
+    element:
+      - wood
+      - fire
+    effect:
+      type: attack
+      target: enemy
+      element: wood
+      value: 2
+  pistol:
+    slot: weapon
+    element:
+      - steel
+      - fire
+    effect:
+      type: attack
+      target: enemy
+      element: steel
+      value: 2
+  sling:
+    slot: weapon
+    element:
+      - rock
+      - fire
+    effect:
+      type: attack
+      target: enemy
+      element: rock
+      value: 2
+  longbow:
+    slot: weapon
+    element:
+      - wood
+    effect:
+      type: attack
+      target: enemy
+      element: wood
+      value: 4
+  greatsword:
+    slot: weapon
+    element:
+      - steel
+    effect:
+      type: attack
+      target: enemy
+      element: steel
+      value: 4
+  maul:
+    slot: weapon
+    element:
+      - rock
+    effect:
+      type: attack
+      target: enemy
+      element: rock
+      value: 4
+  flame:
+    slot: weapon
+    element:
+      - mind
+      - fire
+    effect:
+      type: attack
+      target: enemy
+      element: fire
+      value: 4
+  frost:
+    slot: weapon
+    element:
+      - mind
+      - water
+    effect:
+      type: attack
+      target: enemy
+      element: water
+      value: 3
+  lightning:
+    slot: weapon
+    element:
+      - water
+      - fire
+    effect:
+      type: attack
+      target: enemy
+      element: water
+      value: 4
+  torch:
+    slot: offhand
+    element:
+      - wood
+      - fire
+    effect:
+      type: condition
+      target: enemy
+      value: stun
+  powder:
+    slot: offhand
+    element:
+      - water
+      - rock
+    effect:
+      type: condition
+      target: enemy
+      value: stun
+  mushroom:
+    slot: offhand
+    element:
+      - wood
+      - rock
+    effect:
+      type: condition
+      target: enemy
+      value: stun
+  draught:
+    slot: offhand
+    element:
+      - water
+      - fire
+    effect:
+      type: condition
+      target: enemy
+      value: stun
+  buckler:
+    slot: offhand
+    element:
+      - body
+      - water
+      - steel
+    effect:
+      type: condition
+      target: self
+      value: defend
+  cloak:
+    slot: offhand
+    element:
+      - spirit
+      - wood
+      - rock
+    effect:
+      type: condition
+      target: self
+      value: defend
+  heater:
+    slot: offhand
+    element:
+      - body
+      - water
+    effect:
+      type: condition
+      target: ally
+      value: defend
+  beads:
+    slot: offhand
+    element:
+      - wood
+      - water
+    effect:
+      type: heal
+      target: allies
+      value: 1
+  book:
+    slot: offhand
+    element:
+      - water
+      - rock
+    effect:
+      type: heal
+      target: ally
+      value: 2
+  flask:
+    slot: offhand
+    element:
+      - water
+      - fire
+    effect:
+      type: heal
+      target: self
+      value: 3
+  platemail:
+    slot: armor
+    element:
+      - steel
+      - rock
+    effect:
+      type: defense
+      element: steel
+  platemail:
+    slot: armor
+    element:
+      - steel
+      - rock
+    effect:
+      type: defense
+      element: steel
+  breastplate:
+    slot: armor
+    element:
+      - wood
+      - steel
+    effect:
+      type: defense
+      element: steel
+  leather:
+    slot: armor
+    element:
+      - wood
+      - water
+    effect:
+      type: defense
+      element: wood
+  hide:
+    slot: armor
+    element:
+      - wood
+      - fire
+    effect:
+      type: defense
+      element: wood
+  silk:
+    slot: armor
+    element:
+      - water
+      - rock
+    effect:
+      type: defense
+      element: water
+  cotton:
+    slot: armor
+    element:
+      - water
+      - fire
+    effect:
+      type: defense
+      element: water
+  bomb:
+    slot: consumable
+    element:
+      - any
+    effect:
+      type: attack
+      target: enemies
+      element: fire
+      value: 2
+  herb:
+    slot: consumable
+    element:
+      - any
+    effect:
+      type: heal
+      target: ally
+      value: 3
+  potion:
+    slot: consumable
+    element:
+      - any
+    effect:
+      type: heal
+      target: allies
+      value: 2
+
+moves:
+  pounce:
+    effect:
+      type: attack
+      target: enemy
+      element: wood
+      value: 2
+  tackle:
+    effect:
+      type: attack
+      target: enemy
+      element: water
+      value: 2
+  slash:
+    effect:
+      type: attack
+      target: steel
+      element: steel
+      value: 2
+  lunge:
+    effect:
+      type: attack
+      target: enemy
+      element: rock
+      value: 2
+  bite:
+    effect:
+      type: attack
+      target: enemy
+      element: fire
+      value: 2
+  swipe:
+    effect:
+      type: attack
+      target: enemies
+      element: wood
+      value: 1
+  charge:
+    effect:
+      type: attack
+      target: enemies
+      element: water
+      value: 1
+  claw:
+    effect:
+      type: attack
+      target: enemies
+      element: steel
+      value: 1
+  stab:
+    effect:
+      type: attack
+      target: enemies
+      element: rock
+      value: 1
+  shred:
+    effect:
+      type: attack
+      target: enemies
+      element: fire
+      value: 1
+  howl:
+    effect:
+      type: condition
+      target: enemies
+      value: stun
+  glare:
+    effect:
+      type: condition
+      target: enemy
+      value: stun
+  dodge:
+    effect:
+      type: condition
+      target: self
+      value: defend
+
+encounters:
+  - tavern
+  - shop
+  - monster
+  - dungeon
+
+visualizer:
+  tts:
+    card_dims:
+      card_width: 800
+      card_height: 1200
+      margin: 25
+      sprite_width: 700
+      sprite_height: 550
+      element_width: 200
+      element_height: 200
+      effect_width: 165
+      effect_height: 165
+    # card:
+    #   card_width: 800
+    #   card_height: 1200
+    #   background_color: antiquewhite
+    # tag:
+    # sprite:
+    #   sprite_width: 700
+    #   sprite_height: 550
+    # element:
+    #   element_width: 200
+    #   element_height: 200
+    # effect:
+    #   effect_width: 165
+    #   effect_height: 165
+    colors:
+      background: antiquewhite
+      tag_colors:
+        character:
+          crimson
+        weapon:
+          red
+        offhand:
+          blue
+        armor:
+          grey
+        consumable:
+          brown
+        attack:
+          red
+        condition:
+          blue
+    fonts:
+      font_family: Arial Black
+      name_size: 120
+      effect_size: 165
