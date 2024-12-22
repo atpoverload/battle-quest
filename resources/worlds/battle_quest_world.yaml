@@ -10,7 +10,7 @@ elements:
     wood: 0.5
     water: 2.0
     steel: 0.5
-    rock: 2.0
+    stone: 2.0
     fire: 1.0
     body: 1.0
     mind: 0.5
@@ -19,7 +19,7 @@ elements:
     wood: 1.0
     water: 0.5
     steel: 2.0
-    rock: 0.5
+    stone: 0.5
     fire: 2.0
     body: 2.0
     mind: 0.5
@@ -28,16 +28,16 @@ elements:
     wood: 2.0
     water: 1.0
     steel: 0.5
-    rock: 2.0
+    stone: 2.0
     fire: 0.5
     body: 1.0
     mind: 2.0
     spirit: 1.0
-  rock:
+  stone:
     wood: 0.5
     water: 2.0
     steel: 1.0
-    rock: 0.5
+    stone: 0.5
     fire: 2.0
     body: 1.0
     mind: 2.0
@@ -46,7 +46,7 @@ elements:
     wood: 2.0
     water: 0.5
     steel: 2.0
-    rock: 1.0
+    stone: 1.0
     fire: 0.5
     body: 2.0
     mind: 0.5
@@ -55,7 +55,7 @@ elements:
     wood: 2.0
     water: 1.0
     steel: 2.0
-    rock: 2.0
+    stone: 2.0
     fire: 1.0
     body: 1.0
     mind: 0.5
@@ -64,7 +64,7 @@ elements:
     wood: 1.0
     water: 1.0
     steel: 1.0
-    rock: 1.0
+    stone: 1.0
     fire: 1.0
     body: 2.0
     mind: 0.5
@@ -73,185 +73,79 @@ elements:
     wood: 1.0
     water: 1.0
     steel: 1.0
-    rock: 1.0
+    stone: 1.0
     fire: 1.0
     body: 1.0
     mind: 2.0
     spirit: 2.0
 
+# effects available in this system
+effect:
+  - attack
+  - condition
+  - defense
+  - heal
+
 # conditions that can be applied to characters
 conditions:
-  stun
-  defend
+  - stun
+  - defend
 
 # vocations available
 adventurers:
-  # natural classes
-  barbarian:
-    health: 10
-    element:
-      - body
-      - spirit
-      - wood
-  hunter:
-    health: 10
-    element:
-      - body
-      - mind
-      - wood
-  druid:
-    health: 10
-    element:
-      - mind
-      - spirit
-      - wood
-  # divine classes
-  paladin:
-    health: 10
-    element:
-      - body
-      - spirit
-      - water
-  monk:
-    health: 10
-    element:
-      - body
-      - mind
-      - water
-  cleric:
-    health: 10
-    element:
-      - mind
-      - spirit
-      - water
-  # adventuring classes
   warrior:
     health: 10
     element:
       - body
-      - spirit
       - steel
-  thief:
+      - stone
+  paladin:
     health: 10
     element:
       - body
-      - mind
+      - water
       - steel
-  chemist:
-    health: 10
-    element:
-      - mind
-      - spirit
-      - steel
-  # governing classes
-  knight:
+  barbarian:
     health: 10
     element:
       - body
-      - spirit
-      - rock
-  bard:
-    health: 10
-    element:
-      - body
-      - mind
-      - rock
-  merchant:
-    health: 10
-    element:
-      - body
-      - mind
-      - rock
-  # wild classes
-  pirate:
-    health: 10
-    element:
-      - body
-      - spirit
-      - fire
-  bandit:
-    health: 10
-    element:
-      - body
-      - mind
+      - wood
       - fire
   mage:
     health: 10
     element:
       - mind
+      - water
+      - fire
+  priest:
+    health: 10
+    element:
+      - mind
+      - water
+      - steel
+  merchant:
+    health: 10
+    element:
+      - mind
+      - wood
+      - stone
+  thief:
+    health: 10
+    element:
       - spirit
-      - fire
-
-monsters:
-  tiger:
-    health: 10
-    element:
-      - wood
-  boar:
-    health: 10
-    element:
-      - water
-  raven:
-    health: 10
-    element:
-      - steel
-  wolf:
-    health: 10
-    element:
-      - rock
-  viper:
-    health: 10
-    element:
-      - fire
-  lion:
-    health: 10
-    element:
-      - wood
-      - water
-  turkey:
-    health: 10
-    element:
-      - water
-      - steel
-  owl:
-    health: 10
-    element:
-      - steel
-      - rock
-  coyote:
-    health: 10
-    element:
-      - rock
-      - fire
-  cobra:
-    health: 10
-    element:
-      - wood
-      - fire
-  eagle:
-    health: 10
-    element:
       - wood
       - steel
-  bear:
+  druid:
     health: 10
     element:
-      - water
-      - rock
-  bat:
-    health: 10
-    element:
-      - steel
-      - fire
-  jackal:
-    health: 10
-    element:
+      - spirit
       - wood
-      - rock
-  asp:
+      - water
+  shaman:
     health: 10
     element:
-      - water
+      - spirit
+      - stone
       - fire
 
 items:
@@ -282,7 +176,7 @@ items:
     element:
       - body
       - wood
-      - rock
+      - stone
     effect:
       type: attack
       target: enemy
@@ -303,7 +197,7 @@ items:
     element:
       - body
       - steel
-      - rock
+      - stone
     effect:
       type: attack
       target: enemy
@@ -324,21 +218,21 @@ items:
     element:
       - body
       - steel
-      - rock
+      - stone
     effect:
       type: attack
       target: enemy
-      element: rock
+      element: stone
       value: 2
   halberd:
     slot: weapon
     element:
       - body
-      - rock
+      - stone
     effect:
       type: attack
       target: enemy
-      element: rock
+      element: stone
       value: 3
   morningstar:
     slot: weapon
@@ -364,11 +258,11 @@ items:
     slot: weapon
     element:
       - water
-      - rock
+      - stone
     effect:
       type: attack
       target: enemy
-      element: rock
+      element: stone
       value: 2
   shortbow:
     slot: weapon
@@ -393,12 +287,12 @@ items:
   sling:
     slot: weapon
     element:
-      - rock
+      - stone
       - fire
     effect:
       type: attack
       target: enemy
-      element: rock
+      element: stone
       value: 2
   longbow:
     slot: weapon
@@ -421,11 +315,11 @@ items:
   maul:
     slot: weapon
     element:
-      - rock
+      - stone
     effect:
       type: attack
       target: enemy
-      element: rock
+      element: stone
       value: 4
   flame:
     slot: weapon
@@ -470,7 +364,7 @@ items:
     slot: offhand
     element:
       - water
-      - rock
+      - stone
     effect:
       type: condition
       target: enemy
@@ -479,7 +373,7 @@ items:
     slot: offhand
     element:
       - wood
-      - rock
+      - stone
     effect:
       type: condition
       target: enemy
@@ -508,7 +402,7 @@ items:
     element:
       - spirit
       - wood
-      - rock
+      - stone
     effect:
       type: condition
       target: self
@@ -530,15 +424,17 @@ items:
     effect:
       type: heal
       target: allies
+      element: wood
       value: 1
   book:
     slot: offhand
     element:
       - water
-      - rock
+      - stone
     effect:
       type: heal
       target: ally
+      element: water
       value: 2
   flask:
     slot: offhand
@@ -548,12 +444,13 @@ items:
     effect:
       type: heal
       target: self
+      element: fire
       value: 3
   platemail:
     slot: armor
     element:
       - steel
-      - rock
+      - stone
     effect:
       type: defense
       element: steel
@@ -561,7 +458,7 @@ items:
     slot: armor
     element:
       - steel
-      - rock
+      - stone
     effect:
       type: defense
       element: steel
@@ -593,7 +490,7 @@ items:
     slot: armor
     element:
       - water
-      - rock
+      - stone
     effect:
       type: defense
       element: water
@@ -621,7 +518,8 @@ items:
     effect:
       type: heal
       target: ally
-      value: 3
+      element: any
+      value: 2
   potion:
     slot: consumable
     element:
@@ -629,7 +527,81 @@ items:
     effect:
       type: heal
       target: allies
-      value: 2
+      element: any
+      value: 4
+
+
+monsters:
+  tiger:
+    health: 10
+    element:
+      - wood
+  boar:
+    health: 10
+    element:
+      - water
+  raven:
+    health: 10
+    element:
+      - steel
+  wolf:
+    health: 10
+    element:
+      - stone
+  viper:
+    health: 10
+    element:
+      - fire
+  lion:
+    health: 10
+    element:
+      - wood
+      - water
+  turkey:
+    health: 10
+    element:
+      - water
+      - steel
+  owl:
+    health: 10
+    element:
+      - steel
+      - stone
+  coyote:
+    health: 10
+    element:
+      - stone
+      - fire
+  cobra:
+    health: 10
+    element:
+      - wood
+      - fire
+  eagle:
+    health: 10
+    element:
+      - wood
+      - steel
+  bear:
+    health: 10
+    element:
+      - water
+      - stone
+  bat:
+    health: 10
+    element:
+      - steel
+      - fire
+  jackal:
+    health: 10
+    element:
+      - wood
+      - stone
+  asp:
+    health: 10
+    element:
+      - water
+      - fire
 
 moves:
   pounce:
@@ -654,7 +626,7 @@ moves:
     effect:
       type: attack
       target: enemy
-      element: rock
+      element: stone
       value: 2
   bite:
     effect:
@@ -684,7 +656,7 @@ moves:
     effect:
       type: attack
       target: enemies
-      element: rock
+      element: stone
       value: 1
   shred:
     effect:
@@ -708,56 +680,72 @@ moves:
       target: self
       value: defend
 
-encounters:
-  - tavern
-  - shop
-  - monster
-  - dungeon
+events:
+  tavern:
+    effect:
+      type: recruit
+      value: 3
+  shop:
+    effect:
+      type: shop
+      value: 3
+  campsite:
+    effect:
+      type: rest
+      # value: defend
+  monster:
+    effect:
+      type: battle
+      # value: defend
 
 visualizer:
   tts:
-    card_dims:
-      card_width: 800
-      card_height: 1200
+    card:
+      width: 800
+      height: 1200
       margin: 25
-      sprite_width: 700
-      sprite_height: 550
-      element_width: 200
-      element_height: 200
-      effect_width: 165
-      effect_height: 165
-    # card:
-    #   card_width: 800
-    #   card_height: 1200
-    #   background_color: antiquewhite
-    # tag:
-    # sprite:
-    #   sprite_width: 700
-    #   sprite_height: 550
-    # element:
-    #   element_width: 200
-    #   element_height: 200
-    # effect:
-    #   effect_width: 165
-    #   effect_height: 165
-    colors:
-      background: antiquewhite
-      tag_colors:
-        character:
-          crimson
-        weapon:
-          red
-        offhand:
-          blue
-        armor:
-          grey
-        consumable:
-          brown
-        attack:
-          red
-        condition:
-          blue
-    fonts:
+      background_color: antiquewhite
+      font_size: 120
       font_family: Arial Black
-      name_size: 120
-      effect_size: 165
+      font_color: black
+    cardback:
+      background_color: dodgerblue
+      text: Battle Quest
+      font_size: 160
+      font_family: Arial Black
+      font_color: black
+    tag:
+      width: 175
+      height: 150
+      font_size: 120
+      font_family: Arial Black
+      font_color: black
+      background_colors:
+          character:
+            crimson
+          weapon:
+            red
+          offhand:
+            blue
+          armor:
+            grey
+          consumable:
+            brown
+          attack:
+            red
+          condition:
+            blue
+          encounter:
+            purple
+    sprite:
+      width: 680
+      height: 680
+    element:
+      width: 200
+      height: 200
+    effect:
+      width: 165
+      height: 165
+      font_size: 150
+      font_family: Arial Black
+      font_color: black
