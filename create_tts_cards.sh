@@ -15,7 +15,7 @@ fi
 WORLD_NAME=$(basename "${WORLD_FILE}")
 WORLD_NAME="${WORLD_NAME%.*}"
 
-GENERATED_WORLD=generated/${WORLD_NAME}
+GENERATED_WORLD=generated/tts_card/${WORLD_NAME}
 
 # mkdir generated -p
 # mkdir "${GENERATED_WORLD}" -p
@@ -31,3 +31,4 @@ for card_kind in "${CARD_KINDS[@]}"; do
         --back "${GENERATED_WORLD}/cardback.png"
     mv "${GENERATED_WORLD}/sheets/deck0.png" "${GENERATED_WORLD}/sheets/${card_kind}.png"
 done
+cp "${GENERATED_WORLD}/cardback.png" "${GENERATED_WORLD}/sheets/cardback.png"
