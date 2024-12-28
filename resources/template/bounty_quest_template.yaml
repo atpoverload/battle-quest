@@ -1,0 +1,77 @@
+template:
+  battle_quest
+
+description:
+  a simple config for the test battle quest generator
+
+# mapping of attacking to defending elements; i.e. wood attacking wood is half-damage
+elements:
+  # skills
+  - combat
+  - engineering
+  - medical
+  # species
+  - humanoid
+  - incoporeal
+  - robot
+  - xenomorph
+
+# effects available in this system
+effect:
+  - attack
+  - condition
+  - defense
+  - heal
+  - scan
+
+# conditions that can be applied to characters
+conditions:
+  - blind
+  - stun
+  - burn
+  - defend
+
+generator:
+  characters:
+    - -
+      elements:
+        pools:
+          - -
+            - combat
+            - engineering
+            - medical
+          - -
+            - combat
+            - engineering
+            - medical
+          - -
+            - humanoid
+            - incoporeal
+            - robot
+    - -
+      elements:
+        pools:
+          - -
+            - combat
+            - medical
+          - -
+            - combat
+            - medical
+          - -
+            - xenomorph
+
+events:
+  tavern:
+    effect:
+      type: recruit
+      value: 3
+  shop:
+    effect:
+      type: shop
+      value: 3
+  campsite:
+    effect:
+      type: rest
+  monster:
+    effect:
+      type: battle

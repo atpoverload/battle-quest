@@ -80,7 +80,7 @@ elements:
     spirit: 2.0
 
 # effects available in this system
-effect:
+effects:
   - attack
   - condition
   - defense
@@ -530,7 +530,6 @@ items:
       element: any
       value: 4
 
-
 monsters:
   tiger:
     health: 10
@@ -692,11 +691,9 @@ events:
   campsite:
     effect:
       type: rest
-      # value: defend
   monster:
     effect:
       type: battle
-      # value: defend
 
 visualizer:
   tts:
