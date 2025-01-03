@@ -47,13 +47,16 @@ class VerticalCardDrawer:
         return d
 
     def draw_card(self, name, elements):
-        d = draw.Drawing(*self.size, origin='top-left')
+        d = self.draw_face()
         # d.embed_google_font(self.fonts['font_family'])
         d.append(self.draw_background())
         d.append(self.draw_name(name.title()))
         d.append(self.draw_sprite(name))
         d.extend(self.draw_elements(elements))
         return d
+    
+    def draw_face(self):
+        return draw.Drawing(*self.size, origin='top-left')
 
     def draw_background(self):
         return draw.Rectangle(0, 0, *self.size, fill=self.card['background_color'])
@@ -126,7 +129,7 @@ class VerticalCardDrawer:
         l = []
         # target = effect['target'] if 'target' in effect else ''
         if effect['type'] == 'attack':
-            message = f'Deal {effect["value"]}'
+            message = f'Damage'
             l.append(draw.Text(
                 message,
                 x=self.effect_pos[0],
@@ -137,15 +140,16 @@ class VerticalCardDrawer:
                 font_family=self.effect['font_family'],
                 font_color=self.effect['font_color'],
             ))
-            l.append(draw.Image(
-                x=self.effect_pos[0] +
-                self.sprite['width'] - self.effect['width'],
-                y=self.effect_pos[1],
-                width=self.effect['width'],
-                height=self.effect['height'],
-                path=self.get_sprite(effect['element']),
-                embed=True,
-            ))
+            # for value in effect['value']:
+            #     l.append(draw.Image(
+            #         x=self.effect_pos[0] +
+            #         self.sprite['width'] - self.effect['width'],
+            #         y=self.effect_pos[1],
+            #         width=self.effect['width'],
+            #         height=self.effect['height'],
+            #         path=self.get_sprite(value),
+            #         embed=True,
+            #     ))
         elif effect['type'] == 'condition':
             l.append(draw.Text(
                 'Apply',
@@ -157,15 +161,16 @@ class VerticalCardDrawer:
                 font_family=self.effect['font_family'],
                 font_color=self.effect['font_color'],
             ))
-            l.append(draw.Image(
-                x=self.effect_pos[0] +
-                self.sprite['width'] - self.effect['width'],
-                y=self.effect_pos[1],
-                width=self.effect['width'],
-                height=self.effect['height'],
-                path=self.get_sprite(effect['value']),
-                embed=True,
-            ))
+            # for value in effect['value']:
+            #     l.append(draw.Image(
+            #         x=self.effect_pos[0] +
+            #         self.sprite['width'] - self.effect['width'],
+            #         y=self.effect_pos[1],
+            #         width=self.effect['width'],
+            #         height=self.effect['height'],
+            #         path=self.get_sprite(value),
+            #         embed=True,
+            #     ))
         elif effect['type'] == 'heal':
             l.append(draw.Text(
                 f"Heal {effect['value']}",
@@ -208,7 +213,7 @@ class VerticalCardDrawer:
             ))
         else:
             l.append(draw.Text(
-                f'{effect["type"].title()} {"" if "value" not in effect else effect["value"]}',
+                effect['type'].title(),
                 x=self.effect_pos[0],
                 y=self.effect_pos[1],
                 text_anchor='start',
@@ -217,10 +222,20 @@ class VerticalCardDrawer:
                 font_family=self.effect['font_family'],
                 font_color=self.effect['font_color'],
             ))
+            for value in effect['value']:
+                l.append(draw.Image(
+                    x=self.effect_pos[0] +
+                    self.sprite['width'] - self.effect['width'],
+                    y=self.effect_pos[1],
+                    width=self.effect['width'],
+                    height=self.effect['height'],
+                    path=self.get_sprite(value),
+                    embed=True,
+                ))
         return l
 
     def get_sprite(self, name):
         return os.path.join(
             self.resources,
-            f'{name}.svg'
+            f'{name}.png'
         )

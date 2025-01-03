@@ -1,0 +1,309 @@
+name: &game_name
+  Bounty Quest
+
+description:
+  a config to generate a bounty quest world
+
+properties:
+  # the elements that entities in the world can have
+  element:
+    values: &element_any
+      - combat
+      - engineering
+      - medical
+      - fighter
+      - scout
+      - carrier
+      - station
+      - humanoid
+      - incorporeal
+      - robot
+      - xenomorph
+    # elements may have named sub-groups used for generation or rules
+    group:
+      skill: &element_skill
+        - combat
+        - engineering
+        - medical
+      form: &element_form
+        - fighter
+        - scout
+        - carrier
+        - station
+      species: &element_species
+        - humanoid
+        - incorporeal
+        - robot
+        - xenomorph
+    # relationships between elements when used on each other (i.e. the pokemon type chart)
+    affinity:
+      combat:
+        combat: 1.0
+        engineering: 1.0
+        medical: 1.0
+        fighter: 1.0
+        scout: 1.0
+        carrier: 2.0
+        station: 2.0
+      engineering:
+        combat: 1.0
+        engineering: 1.0
+        medical: 1.0
+        fighter: 2.0
+        scout: 2.0
+        carrier: 1.0
+        station: 1.0
+      medical:
+        combat: 1.0
+        engineering: 1.0
+        medical: 1.0
+        fighter: 0.5
+        scout: 1.0
+        carrier: 1.0
+        station: 1.0
+      fighter:
+        combat: 1.0
+        engineering: 1.0
+        medical: 0.5
+        fighter: 1.0
+        scout: 0.5
+        carrier: 2.0
+        station: 2.0
+      scout:
+        combat: 0.5
+        engineering: 2.0
+        medical: 0.5
+        fighter: 0.5
+        scout: 2.0
+        carrier: 1.0
+        station: 1.0
+      carrier:
+        combat: 1.0
+        engineering: 2.0
+        medical: 0.5
+        fighter: 1.0
+        scout: 1.0
+        carrier: 1.0
+        station: 1.0
+      station:
+        combat: 1.0
+        engineering: 1.0
+        medical: 0.5
+        fighter: 2.0
+        scout: 2.0
+        carrier: 1.0
+        station: 0.5
+      humanoid: {}
+      incorporeal: {}
+      robot: {}
+      xenomorph: {}
+
+  condition:
+    values: &condition_any
+      - defend
+      - dodge
+      - blind
+      - burn
+      - stun
+    group:
+      buff: &condition_buff
+        - defend
+        - dodge
+      debuff: &condition_debuff
+        - blind
+        - burn
+        - stun
+
+  ability:
+    values:
+      - boost
+      - resist
+      - revenge
+
+  # effects available in this system
+  action:
+    values:
+      - attack
+      - condition
+      - grant
+
+generator:
+  ability:
+    - type: boost
+      value: 
+       - *element_skill
+    - type: boost
+      value: 
+       - *element_form
+    - type: boost
+      value: 
+       - *condition_debuff
+    - type: boost
+      value:
+        - *element_skill
+        - *element_form
+    - type: resist
+      value:
+        - *element_form
+    - type: resist
+      value:
+        - *condition_debuff
+    - type: revenge
+      value:
+        - *element_skill
+    - type: revenge
+      value:
+        - *element_species
+  action:
+    - type: attack
+      value:
+      - *element_form
+    - type: attack
+      value:
+      - *element_species
+    - type: condition
+      value:
+      - *condition_buff
+    - type: condition
+      value:
+      - *condition_debuff
+    - type: attack
+      value:
+      - *element_form
+      - *element_form
+    - type: attack
+      value:
+      - *element_skill
+      - *element_form
+    - type: attack
+      value:
+      - - combat
+      - - combat
+      - - combat
+    - type: attack
+      value:
+      - - combat
+      - - combat
+      - - combat
+      - - combat
+    - type: attack
+      value:
+      - - engineering
+      - - engineering
+      - - engineering
+  character:
+    - type: pilot
+      element:
+        - *element_skill
+        - *element_skill
+        - *element_form
+        - *element_species
+
+randomizer:
+  seed: &randomizer_seed 19420101
+  # TODO: i have no clue what im trying to do here exactly
+  element: # takes a list of element values or groups
+    - *element_species
+  character:
+    - type:
+       - pilot
+      count: 40
+      health:
+        - 6
+        - 12
+    - type:
+       - pilot
+      element:
+       - humanoid
+      count: 20
+      health:
+        - 4
+        - 10
+      effect:
+        - ability
+    - type:
+       - pilot
+      element:
+       - incorporeal
+      count: 20
+      health:
+        - 4
+        - 10
+      effect:
+        - ability
+    - type:
+       - pilot
+      element:
+       - robot
+      count: 20
+      health:
+        - 4
+        - 10
+      effect:
+        - ability
+    - type:
+       - pilot
+      element:
+       - xenomorph
+      count: 20
+      health:
+        - 4
+        - 10
+      effect:
+        - ability
+
+visualizer:
+  sprite_generator:
+    seed: *randomizer_seed
+    template:
+      
+  tts:
+    card:
+      width: 800
+      height: 1200
+      margin: 25
+      background_color: antiquewhite
+      font_size: 120
+      font_family: Arial Black
+      font_color: black
+    cardback:
+      background_color: dodgerblue
+      text: *game_name
+      font_size: 160
+      font_family: Arial Black
+      font_color: black
+    tag:
+      width: 175
+      height: 150
+      font_size: 120
+      font_family: Arial Black
+      font_color: black
+      background_colors:
+          character:
+            crimson
+          weapon:
+            red
+          offhand:
+            blue
+          armor:
+            grey
+          consumable:
+            brown
+          attack:
+            red
+          condition:
+            blue
+          encounter:
+            purple
+    sprite:
+      width: 680
+      height: 680
+    element:
+      width: 200
+      height: 200
+    effect:
+      width: 165
+      height: 165
+      font_size: 150
+      font_family: Arial Black
+      font_color: black
