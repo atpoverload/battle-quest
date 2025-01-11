@@ -126,6 +126,50 @@ properties:
       - attack
       - condition
       - grant
+  
+  event:
+    values: &event_any
+      - shop
+      - station
+      - bounty
+      - fight
+      - bounty fight
+
+entities:
+  event:
+  - type: fight
+    count: 10
+    entity_count: 1
+  - type: fight
+    count: 5
+    entity_count: 2
+  - type: fight
+    count: 3
+    entity_count: 3
+  - type: bounty
+    count: 10
+    entity_count: 3
+  - type: bounty fight
+    count: 5
+    entity_count: 1
+  - type: bounty fight
+    count: 2
+    entity_count: 2
+  - type: bounty fight
+    count: 1
+    entity_count: 3
+  - type: market
+    count: 10
+    entity_count: 3
+  - type: market
+    count: 5
+    entity_count: 5
+  - type: station
+    count: 10
+    entity_count: 3
+  - type: station
+    count: 5
+    entity_count: 5
 
 generator:
   ability:
@@ -207,7 +251,7 @@ randomizer:
   character:
     - type:
        - pilot
-      count: 40
+      count: 100
       health:
         - 6
         - 12
@@ -215,7 +259,7 @@ randomizer:
        - pilot
       element:
        - humanoid
-      count: 20
+      count: 50
       health:
         - 4
         - 10
@@ -225,7 +269,7 @@ randomizer:
        - pilot
       element:
        - incorporeal
-      count: 20
+      count: 50
       health:
         - 4
         - 10
@@ -235,7 +279,7 @@ randomizer:
        - pilot
       element:
        - robot
-      count: 20
+      count: 50
       health:
         - 4
         - 10
@@ -245,7 +289,7 @@ randomizer:
        - pilot
       element:
        - xenomorph
-      count: 20
+      count: 50
       health:
         - 4
         - 10
@@ -256,7 +300,31 @@ visualizer:
   sprite_generator:
     seed: *randomizer_seed
     template:
-      
+      humanoid: resources/templates/humanoid_template.txt
+      incorporeal: resources/templates/incorporeal_template.txt
+      robot: resources/templates/robot_template.txt
+      xenomorph: resources/templates/xenomorph_template.txt
+    palette:
+      # cockpit:
+      #   hue: 0.50
+      #   saturation: 0.65
+      #   value: 125
+      fighter:
+        hue: 0.05
+        saturation: 0.75
+        value: 255
+      scout:
+        hue: 0.37
+        saturation: 0.75
+        value: 255
+      carrier:
+        hue: 0.65
+        saturation: 0.75
+        value: 255
+      station:
+        hue: 0.90
+        saturation: 0.75
+        value: 255
   tts:
     card:
       width: 800

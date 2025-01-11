@@ -27,7 +27,7 @@ def main():
     args = parse_args()
     logging.basicConfig(
         format='battle-quest-world-randomizer (%(asctime)s) [%(levelname)s]: %(message)s',
-        level=logging.DEBUG
+        level=logging.INFO
     )
 
     logging.info('loading generated world from %s', args.world)

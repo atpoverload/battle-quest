@@ -13,6 +13,9 @@ import yaml
 
 from util import display_world_info
 
+PHI = (1 + sqrt(5)) / 2
+
+
 def manhattan_distance(x, y, i, j):
     return abs(x - i) + abs(y - j)
 
@@ -85,7 +88,7 @@ def inner_outline(sprite, border=None):
         #         break
 
         # TODO: this seems to work the best?
-        is_border = sum([sprite[i][j] == 0 for i, j in neighbors]) >= 2
+        is_border = sum([sprite[i][j] == 0 for i, j in neighbors]) >= 1
         if is_border:
             new_sprite[x][y] = border
     return new_sprite
@@ -148,18 +151,11 @@ COCKPIT = create_palette(
 
 
 def create_ship_palette(hue):
+    b_hue = (hue + 1 / PHI) % 1
     c_hue = (hue + 0.5) % 1
+    cb_hue = (c_hue + 1 / PHI) % 1
     return {
-        -2: COCKPIT,
-        -1: create_palette(
-            lambda x, y: hue - abs(y - 6) / 12 / 12,
-            lambda x, y: 0.65 -
-            sqrt(abs((x - 6) * (x - 6) + (y - 6) * (y - 6))) / 12 / 2,
-            lambda x, y: 125 + 6 * (y - 6),
-            lambda x, y: 255,
-            12,
-            12,
-        ),
+        -100: COCKPIT,
         1: create_palette(
             lambda x, y: hue - sqrt((x - 6) * (x - 6) +
                                     (y - 6) * (y - 6)) / 12 / 4,
@@ -170,11 +166,30 @@ def create_ship_palette(hue):
             12,
             12,
         ),
+        -1: create_palette(
+            lambda x, y: hue - abs(y - 6) / 12 / 12 / 2,
+            lambda x, y: 0.25 +
+            sqrt(abs((x - 6) * (x - 6) + (y - 6) * (y - 6))) / 12 / 2,
+            lambda x, y: 150 + 6 * (y - 6),
+            lambda x, y: 255,
+            12,
+            12,
+        ),
+        # -1: (0, 0, 0, 255),
         2: create_palette(
             lambda x, y: c_hue - (y - 6) / 12 / 12,
-            lambda x, y: 0.30 -
+            lambda x, y: 0.50 -
             sqrt(abs((x - 6) * (x - 6) + (y - 6) * (y - 6))) / 12 / 2,
-            lambda x, y: 125 - 12 * abs(y - 6),
+            lambda x, y: 175 - 12 * abs(y - 6),
+            lambda x, y: 255,
+            12,
+            12,
+        ),
+        -2: create_palette(
+            lambda x, y: c_hue - (y - 6) / 12 / 12,
+            lambda x, y: 0.40 -
+            sqrt(abs((x - 6) * (x - 6) + (y - 6) * (y - 6))) / 12 / 2,
+            lambda x, y: 150 - 12 * abs(y - 6),
             lambda x, y: 255,
             12,
             12,
@@ -193,13 +208,13 @@ def main():
     args = parse_args()
     logging.basicConfig(
         format='battle-quest-visualizer-sprite_generator (%(asctime)s) [%(levelname)s]: %(message)s',
-        level=logging.DEBUG
+        level=logging.INFO
     )
 
     logging.info('loading template from %s', args.world)
     with open(args.world, encoding='utf8') as f:
         world = yaml.load(f, yaml.Loader)
-    
+
     display_world_info(world)
 
     if 'visualizer' not in world or 'sprite_generator' not in world['visualizer']:
@@ -211,98 +226,53 @@ def main():
         logging.info('setting seed to %d', options['seed'])
         seed(options['seed'])
 
+    templates = {}
+    for template in options['template']:
+        with open(options['template'][template], encoding='utf8') as f:
+            templates[template] = [[
+                int(value) for value in line.strip().split(' ') if value.lstrip('-').isdigit()
+            ] for line in f.readlines()]
+
+    palettes = {}
+    for palette in options['palette']:
+        palettes[palette] = create_ship_palette(
+            options['palette'][palette]['hue'])
+        # with open(options['template'][template], encoding='utf8') as f:
+        #     templates[template] = [[
+        #         int(value) for value in line.strip().split(' ') if value.lstrip('-').isdigit()
+        #     ] for line in f.readlines()]
+
     # TODO: much of this needs to live in the config
-    templates = {
-        'humanoid': [
-            [0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 1],
-            [0, 0, 0, 0, 1, -2],
-            [0, 0, 0, 1, 1, -2],
-            [0, 0, 0, 1, 1, -2],
-            [0, 0, 1, 1, 1, -2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 1, -2],
-            [0, 0, 0, 1, 1, 1],
-            [0, 0, 0, 0, 0, 0]
-        ],
-        'incorporeal': [
-            [0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 1],
-            [0, 0, 0, 0, 1, -2],
-            [0, 0, 0, 1, 1, -2],
-            [0, 0, 0, 1, 1, -2],
-            [0, 0, 1, 1, 1, -2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 1, -2],
-            [0, 0, 0, 1, 1, 1],
-            [0, 0, 0, 0, 0, 0]
-        ],
-        'robot': [
-            [0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 1],
-            [0, 0, 0, 0, 1, -2],
-            [0, 0, 0, 1, 1, -2],
-            [0, 0, 0, 1, 1, -2],
-            [0, 0, 1, 1, 1, -2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 1, -2],
-            [0, 0, 0, 1, 1, 1],
-            [0, 0, 0, 0, 0, 0]
-        ],
-        'xenomorph': [
-            [0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 1],
-            [0, 0, 0, 0, 1, -2],
-            [0, 0, 0, 1, 1, -2],
-            [0, 0, 0, 1, 1, -2],
-            [0, 0, 1, 1, 1, -2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 2, 2],
-            [0, 1, 1, 1, 1, -2],
-            [0, 0, 0, 1, 1, 1],
-            [0, 0, 0, 0, 0, 0]
-        ],
-    }
+    # palettes = {
+    #     'fighter': create_ship_palette(0.20),
+    #     'scout': create_ship_palette(0.40),
+    #     'carrier': create_ship_palette(0.60),
+    #     'station': create_ship_palette(0.80),
+    # }
 
-    palettes = {
-        'fighter': create_ship_palette(0.20),
-        'scout': create_ship_palette(0.40),
-        'carrier': create_ship_palette(0.60),
-        'station': create_ship_palette(0.80),
-    }
+    # form = [
+    #     'fighter',
+    #     'scout',
+    #     'carrier',
+    #     'station',
+    # ]
 
-    form = [
-        'fighter',
-        'scout',
-        'carrier',
-        'station',
-    ]
-
-    species = [
-        'humanoid',
-        'incorporeal',
-        'robot',
-        'xenomorph',
-    ]
+    species = list(templates.keys())
+    form = list(palettes.keys())
 
     for n, character in enumerate(world['entities']['character']):
         s = [element for element in character['element'] if element in species][0]
         template = templates[s]
         f = [element for element in character['element'] if element in form][0]
         palette = palettes[f]
+        seed(hash(tuple([character['name']] + character['element'])))
         sprite = inner_outline(
-            mutate(template, depth=species.index(s)), border=-1)
+            mutate(template, depth=species.index(s) + 1), border=-1)
         image = draw_sprite(sprite, palette, mirror=True, rescaling=16)
         image.save(f'{args.output}/{character['name']}.png')
 
     logging.info('wrote %d random sprites to %s', n, args.output)
+
 
 if __name__ == '__main__':
     main()

@@ -49,3 +49,6 @@ for cards in ${CARD_DIR}/cards/**; do
         mv "${deck}" "${CARD_DIR}/sheets/${card_kind}_${deck_name}"
     done
 done
+python visualizer/type_chart.py \
+    -w "${SCRATCH_DIR}/randomized_world.yaml" \
+    -o "${CARD_DIR}/type_chart.pdf"

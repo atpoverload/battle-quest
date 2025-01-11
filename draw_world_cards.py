@@ -91,6 +91,24 @@ def main():
     for name, adventurer in actions.items():
         # adventurer.save_svg(f'{args.output}/cards/actions/{name}.svg')
         adventurer.save_png(f'{args.output}/actions/{name}.png')
+    
+    events = []
+    for entity in world['entities']['event']:
+        for _ in range(entity['count']):
+            d = drawer.draw_face()
+            d.append(drawer.draw_background())
+            d.append(drawer.draw_sprite(entity['type']))
+            d.append(drawer.draw_name(entity['type'].title()))
+            d.extend(drawer.draw_effect(entity))
+            events.append(d)
+    logging.info(
+        'generated %d events',
+        len(events),
+    )
+    maybe_create_dir(f'{args.output}/events')
+    for i, event in enumerate(events):
+        # adventurer.save_svg(f'{args.output}/cards/events/{name}.svg')
+        event.save_png(f'{args.output}/events/{i}.png')
 
     # monsters = {}
     # for name in world['entity']['monsters']:

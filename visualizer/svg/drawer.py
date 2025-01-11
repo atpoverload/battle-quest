@@ -129,12 +129,16 @@ class VerticalCardDrawer:
         l = []
         # target = effect['target'] if 'target' in effect else ''
         if effect['type'] == 'attack':
-            message = f'Damage'
+            # print(self.center)
+            # print(self.effect_pos)
+            # message = f'Damage'
             l.append(draw.Text(
-                message,
-                x=self.effect_pos[0],
+                'Damage',
+                # x=self.effect_pos[0],
+                x=self.center[0],
                 y=self.effect_pos[1],
-                text_anchor='start',
+                # text_anchor='start',
+                text_anchor='middle',
                 dominant_baseline='hanging',
                 font_size=self.effect['font_size'],
                 font_family=self.effect['font_family'],
@@ -153,9 +157,11 @@ class VerticalCardDrawer:
         elif effect['type'] == 'condition':
             l.append(draw.Text(
                 'Apply',
-                x=self.effect_pos[0],
+                # x=self.effect_pos[0],
+                x=self.center[0],
                 y=self.effect_pos[1],
-                text_anchor='start',
+                # text_anchor='start',
+                text_anchor='middle',
                 dominant_baseline='hanging',
                 font_size=self.effect['font_size'],
                 font_family=self.effect['font_family'],
@@ -211,9 +217,35 @@ class VerticalCardDrawer:
                 path=self.get_sprite(effect['element']),
                 embed=True,
             ))
+        elif effect['type'] in ['fight', 'bounty', 'bounty fight', 'market', 'station']:
+            # l.append(draw.Text(
+            #     effect['type'].title(),
+            #     x=self.effect_pos[0],
+            #     y=self.effect_pos[1],
+            #     text_anchor='start',
+            #     dominant_baseline='hanging',
+            #     font_size=self.effect['font_size'],
+            #     font_family=self.effect['font_family'],
+            #     font_color=self.effect['font_color'],
+            # ))
+            # for value in effect['value']:
+            l.append(draw.Text(
+                str(effect['entity_count']),
+                x=self.center[0],
+                y=self.effect_pos[1],
+                text_anchor='middle',
+                dominant_baseline='hanging',
+                font_size=self.effect['font_size'],
+                font_family=self.effect['font_family'],
+                font_color=self.effect['font_color'],
+                # width=self.effect['width'],
+                # height=self.effect['height'],
+                # path=self.get_sprite(value),
+                # embed=True,
+            ))
         else:
             l.append(draw.Text(
-                effect['type'].title(),
+                str(effect['type'].title()),
                 x=self.effect_pos[0],
                 y=self.effect_pos[1],
                 text_anchor='start',

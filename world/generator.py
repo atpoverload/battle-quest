@@ -64,7 +64,7 @@ def generate_characters(character):
         characters.append({
             'name': '+'.join(element),
             'type': character['type'],
-            'element': list(set(element)),
+            'element': list(dict.fromkeys(element)),
         })
     return characters
 
@@ -117,7 +117,7 @@ def main():
     args = parse_args()
     logging.basicConfig(
         format='battle-quest-world-generator (%(asctime)s) [%(levelname)s]: %(message)s',
-        level=logging.DEBUG
+        level=logging.INFO
     )
 
     logging.info('loading template from %s', args.world)
@@ -132,7 +132,6 @@ def main():
 
     generator = world['generator']
 
-    entities = {}
     properties = deepcopy(world['properties'])
 
     entities = generate_entities(generator)
@@ -141,9 +140,9 @@ def main():
     for entity in entities:
         logging.info(f' - {entity}: {len(entities[entity])}')
 
-    world['properties'] = properties
-    world['entities'] = entities
-    world['description'] = f'a generated world for {world['name']}'
+    # world['properties'] = properties
+    for entity in entities:
+        world['entities'][entity] = entities[entity]
     del world['generator']
 
     with open(args.output, 'w', encoding='utf8') as f:
